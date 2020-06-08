@@ -10,9 +10,11 @@ class UsersController < ApplicationController
     end
 
   post '/signup' do 
+    #no empty params
     if params[:username] == "" || params[:password] == "" 
       redirect '/error'
     else
+      #create new user
       user = User.new(username: params[:username], password_digest: params[:password_digest])
       user.save
       session[:id] = user.id
