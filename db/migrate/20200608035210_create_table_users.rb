@@ -5,5 +5,6 @@ class CreateTableUsers < ActiveRecord::Migration
       t.string :instrument
       t.string :equipment
       t.string :password_digest
+    end
   end
 end
