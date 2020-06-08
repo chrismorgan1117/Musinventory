@@ -1,2 +1,18 @@
 <!DOCTYPE html>
-add instrument or equipment
+<html>
+  <form action="/equipment/edit<%= @equipment.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <ul>
+    <li>
+      <label for="name">Name</label>
+      <input id="name" type="text" name="equipment[name]" value="<%= @equipment.name %>" />
+    </li>
+    <li>
+      <label for="quantity">Quantity</label>
+      <textarea id="quantity" type="text" name="equipment[quantity]"  value="<%= @equipment.quantity %>">
+      </textarea>
+    </li>
+  </ul>
+  <input type="submit" />
+</form>
+</html>
