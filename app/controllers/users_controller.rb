@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       user = User.new(username: params[:username], password_digest: params[:password_digest])
       user.save
       session[:id] = user.id
-      redirect "/users/#{user.id}"
+      redirect "/equipment/create"
     end
   end
 
@@ -34,10 +34,7 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/profile' do 
 
-    erb :profile
-  end
   
   
   get '/users/:id' do
@@ -45,6 +42,15 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     if logged_in? && @user == current_user
       erb :'/users/profile'
+    else
+      redirect to '/'
+    end
+  end
+
+  get '/logout' do
+    if logged_in?
+      session.clear
+      redirect to '/'
     else
       redirect to '/'
     end
